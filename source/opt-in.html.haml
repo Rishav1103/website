@@ -1,0 +1,63 @@
+---
+directory_index: false
+---
+
+%section.hero-splash{style: "background-image: url(#{image_path("backgrounds/roy-and-ruben.jpg")});"}
+  .container
+    .centered-row
+      %h1#waiter Wait for it...
+      %p.lead
+        You've opted in to receive things from us. Thank you for keeping in contact!
+
+      %h3.no-margin-bottom Any questions?
+      %p 
+        Feel free to mail us at 
+        = mail_to "contact@makersacademy.com"
+        &mdash; or pick up the phone and have a natter with us on 020 3817 8870.
+
+      %h3.no-margin-bottom I regret everything!
+      %p Changed your mind? You can unsubscribe from communications with us in the email that sent you here.
+
+      %p.small-padding-top
+        = link_to "Go to Makers Academy website", "/", class: 'button button--horizontal'
+
+:javascript
+  window.addEventListener('DOMContentLoaded', function() {
+    var waiter = document.getElementById('waiter');
+    waiter.innerHTML = "Woohoo!";
+    (function ($) {
+      'use strict';
+
+      getConsent(getUrlParameter('email'));
+
+      function getConsent(email) {
+        analytics.identify(email, analyticsTraits(), function() {
+          analytics.page('null', 'Flush to HubSpot');
+        });
+      };
+    
+      function analyticsTraits() {
+        var traits = {
+          email: getUrlParameter('email'),
+          legal_basis: "Freely given consent from contact",
+          hs_legal_basis: "Freely given consent from contact",
+          date_consent_given: dateConsentGiven(),
+          marketing_consent: true
+        };
+
+        return traits;
+      };
+
+      function getUrlParameter(name) {
+          name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+          var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+          var results = regex.exec(location.search);
+          return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+      };
+
+      function dateConsentGiven() {
+        var now = new Date();
+        return now.toISOString();
+      };
+    })(jQuery, analytics);
+  })

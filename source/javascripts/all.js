@@ -20,6 +20,7 @@
 //= require vendor/retina.min
 //= require vendor/slick.js
 //= require vendor/prism
+//= require vendor/date_to_iso_string_polyfill
 //= require navigation
 //= require jquery.fixedscroll
 //= require email_capture
