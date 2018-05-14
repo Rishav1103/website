@@ -103,6 +103,8 @@ redirect "cards.html", to: "https://makersacademy.github.io/cards"
 redirect "cosmo.html", to: "women.html"
 redirect "fellowship.html", to: "https://fellowship.makersacademy.com?utm_source=website&utm_medium=redirect"
 redirect "fellowships.html", to: "https://fellowship.makersacademy.com?utm_source=website&utm_medium=redirect"
+redirect "learn-ruby-in-15.html", to: "index.html"
+redirect "education-leaver.html", to: "curriculum.html"
 
 # Uncomment to redirect all /employers routes to employers. subdomain
 redirect "employers.html", to: "http://employers.makersacademy.com"
