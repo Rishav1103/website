@@ -1,0 +1,60 @@
+---
+directory_index: false
+---
+
+%section.hero-splash{style: "background-image: url(#{image_path("backgrounds/roy-and-ruben.jpg")});"}
+  .container
+    .centered-row
+      %h1#waiter Wait for it...
+      %p.lead
+        We're sad to see you go. But thank you for letting us know!
+
+      %h3.no-margin-bottom Any questions?
+      %p 
+        Feel free to mail us at 
+        = mail_to "contact@makersacademy.com"
+        &mdash; or pick up the phone and have a natter with us on 020 3817 8870.
+
+      %h3.no-margin-bottom I regret everything!
+      %p Changed your mind? You can resubscribe to communications with us below:
+
+      = partial :"email-capture", locals: { segments: "website-homepage-newsletter", lifecycle_stage: "subscriber", customer_type: "b2c", button_text: "Resubscribe" }
+
+      %p.small-padding-top
+        = link_to "Go to Makers Academy website", "/", class: 'button button--horizontal'
+
+:javascript
+  window.addEventListener('DOMContentLoaded', function() {
+    var waiter = document.getElementById('waiter');
+    waiter.innerHTML = "Got it.";
+    (function ($) {
+      'use strict';
+
+      updateConsent(getUrlParameter('email'));
+
+      function updateConsent(email) {
+        analytics.identify(email, analyticsTraits(), function() {
+          analytics.page('null', 'Flush to HubSpot');
+        });
+      };
+    
+      function analyticsTraits() {
+        var traits = {
+          email: getUrlParameter('email'),
+          legal_basis: "Not Applicable",
+          hs_legal_basis: "Not Applicable",
+          date_consent_given: null,
+          marketing_consent: false
+        };
+
+        return traits;
+      };
+
+      function getUrlParameter(name) {
+          name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+          var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+          var results = regex.exec(location.search);
+          return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+      };
+    })(jQuery, analytics);
+  })
