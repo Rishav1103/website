@@ -118,7 +118,6 @@ redirect "employers/contact.html", to: "http://employers.makersacademy.com/reque
 # New site redirects
 
 redirect "index.html", to: "https://makers.tech/"
-redirect "404.html", to: "https://makers.tech/404"
 redirect "about-us.html", to: "https://makers.tech/about-us/"
 redirect "acast.html", to: "https://makers.tech/"
 redirect "alumni.html", to: "https://makers.tech/success-story-funmi-adewodu/"
