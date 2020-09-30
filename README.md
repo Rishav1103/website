@@ -1,4 +1,4 @@
-# Makers Academy Site
+# Makers Academy Site amzaing project
 
 [ ![Codeship Status for makersacademy/website](https://codeship.com/projects/6c2574a0-2e49-0133-57fc-4ab88c866e91/status?branch=master)](https://codeship.com/projects/99059)
 
